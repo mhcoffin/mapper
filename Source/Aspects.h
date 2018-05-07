@@ -15,6 +15,7 @@
 
 //==============================================================================
 /*
+ * Some new documentation...
 */
 class Aspects    : public Component
 {
