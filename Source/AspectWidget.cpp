@@ -12,11 +12,12 @@
 #include "AspectWidget.h"
 
 //==============================================================================
-AspectWidget::AspectWidget()
+AspectWidget::AspectWidget(String name)
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
-
+    group.setText(name);
+    addAndMakeVisible(group);
 }
 
 AspectWidget::~AspectWidget()
@@ -47,5 +48,6 @@ void AspectWidget::resized()
 {
     // This method is where you should set the bounds of any child
     // components that your component contains..
+    group.setBounds(getLocalBounds().reduced(5.0));
 
 }

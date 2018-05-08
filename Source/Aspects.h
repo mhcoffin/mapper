@@ -27,8 +27,8 @@ public:
     void resized() override;
 
 private:
-    AspectWidget a_;
-    AspectWidget b_;
+    AspectWidget a_ { "Foobar" };
+    AspectWidget b_ { "Fizbin" };
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Aspects)
 };
