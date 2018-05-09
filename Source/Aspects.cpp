@@ -22,12 +22,18 @@ Aspects::Aspects()
     durations->addItem("Staccatissimo");
     durations->addItem("Staccato");
     durations->addItem("Tenuto");
+    durations->addItem("Staccato-Tenuto");
     aspectWidgets_.add(durations);
     
     auto techniques = new AspectWidget{"Playing Techniques"};
     techniques->addItem("Pizz");
     techniques->addItem("Arco");
     aspectWidgets_.add(techniques);
+    
+    auto legato = new AspectWidget("Legato");
+    legato->addItem("Normal");
+    legato->addItem("Legato");
+    aspectWidgets_.add(legato);
     
     for (auto aw : aspectWidgets_) {
         addAndMakeVisible(aw);

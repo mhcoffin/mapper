@@ -37,15 +37,16 @@ void AspectWidget::paint (Graphics& g)
        drawing code..
     */
 
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
+    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
 }
 
 void AspectWidget::resized()
 {
     // This method is where you should set the bounds of any child
     // components that your component contains..
+    
     group_.setBounds(getLocalBounds().reduced(5));
-    auto groupBounds = group_.getLocalBounds().withTop(10).reduced(5);
+    auto groupBounds = group_.getLocalBounds().withTop(20).reduced(5);
     for (auto button : items_)
     {
         button->setBounds(groupBounds.removeFromTop(40).reduced(2));
