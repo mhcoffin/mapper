@@ -12,16 +12,17 @@
 #include "AspectWidget.h"
 
 //==============================================================================
-AspectWidget::AspectWidget()
+AspectWidget::AspectWidget(std::shared_ptr<AspectModel> model)
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
+    model_ = model;
+    group_.setText(model_->getName());
     addAndMakeVisible(group_);
-}
-
-AspectWidget::AspectWidget(String name) {
-    group_.setText(name);
-    addAndMakeVisible(group_);
+    
+    model_->addNameChangeListener([&](String name) { group_.setText(name); });
+    
+    
 }
 
 AspectWidget::~AspectWidget()
@@ -36,7 +37,6 @@ void AspectWidget::paint (Graphics& g)
        You should replace everything in this method with your own
        drawing code..
     */
-
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
 }
 
@@ -51,13 +51,4 @@ void AspectWidget::resized()
     {
         button->setBounds(groupBounds.removeFromTop(40).reduced(2));
     }
-}
-
-void AspectWidget::setName(String name) {
-    group_.setText(name);
-}
-
-void AspectWidget::addItem(String name) {
-    auto button = items_.add(new TextButton{name});
-    group_.addAndMakeVisible(button);
 }

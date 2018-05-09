@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT name="mapper" projectType="guiapp" jucerVersion="5.3.1">
+<JUCERPROJECT name="mapper" projectType="guiapp" jucerVersion="5.3.2" id="nPWiBw">
   <MAINGROUP id="im4P9p" name="mapper">
     <GROUP id="{AC22F4E3-E788-FAE8-0055-C4163F8D615D}" name="Source">
+      <FILE id="cuAQxY" name="AspectModel.cpp" compile="1" resource="0" file="Source/AspectModel.cpp"/>
+      <FILE id="f3wAVa" name="AspectModel.h" compile="0" resource="0" file="Source/AspectModel.h"/>
       <FILE id="HjOWNz" name="AspectWidget.cpp" compile="1" resource="0"
             file="Source/AspectWidget.cpp"/>
       <FILE id="mj0vgA" name="AspectWidget.h" compile="0" resource="0" file="Source/AspectWidget.h"/>
-      <FILE id="vvmCO3" name="Controls.cpp" compile="1" resource="0" file="Source/Controls.cpp"/>
-      <FILE id="JWlzjI" name="Controls.h" compile="0" resource="0" file="Source/Controls.h"/>
-      <FILE id="EgPJcy" name="Aspects.cpp" compile="1" resource="0" file="Source/Aspects.cpp"/>
-      <FILE id="tmHTMb" name="Aspects.h" compile="0" resource="0" file="Source/Aspects.h"/>
+      <FILE id="vvmCO3" name="ControlPane.cpp" compile="1" resource="0" file="Source/ControlPane.cpp"/>
+      <FILE id="JWlzjI" name="ControlPane.h" compile="0" resource="0" file="Source/ControlPane.h"/>
+      <FILE id="EgPJcy" name="AspectPane.cpp" compile="1" resource="0" file="Source/AspectPane.cpp"/>
+      <FILE id="tmHTMb" name="AspectPane.h" compile="0" resource="0" file="Source/AspectPane.h"/>
       <FILE id="Tpc8Db" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="bA6rHD" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>

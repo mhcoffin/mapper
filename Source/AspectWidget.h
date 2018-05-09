@@ -11,6 +11,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "AspectModel.h"
 
 //==============================================================================
 /*
@@ -18,16 +19,14 @@
 class AspectWidget    : public Component
 {
 public:
-    AspectWidget();
-    AspectWidget(String name);
+    AspectWidget(std::shared_ptr<AspectModel> model);
     ~AspectWidget();
 
     void paint (Graphics&) override;
     void resized() override;
-    void setName(String name);
-    void addItem(String itemName);
 
 private:
+    std::shared_ptr<AspectModel> model_;
     GroupComponent group_;
     OwnedArray<TextButton> items_;
     

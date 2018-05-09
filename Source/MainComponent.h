@@ -9,8 +9,8 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Aspects.h"
-#include "Controls.h"
+#include "AspectPane.h"
+#include "ControlPane.h"
 
 //==============================================================================
 /*
@@ -31,8 +31,8 @@ public:
 private:
     //==============================================================================
     // Your private member variables go here...
-    Aspects aspects;
-    Controls controls;
+    AspectPane aspects;
+    ControlPane controls;
     
     StretchableLayoutManager stretchableLayoutManager;
     StretchableLayoutResizerBar resizerBar { & stretchableLayoutManager, 1, false };
