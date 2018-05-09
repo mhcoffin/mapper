@@ -18,14 +18,18 @@
 class AspectWidget    : public Component
 {
 public:
+    AspectWidget();
     AspectWidget(String name);
     ~AspectWidget();
 
     void paint (Graphics&) override;
     void resized() override;
+    void setName(String name);
+    void addItem(String itemName);
 
 private:
-    GroupComponent group;
+    GroupComponent group_;
+    OwnedArray<TextButton> items_;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectWidget)
 };

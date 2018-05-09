@@ -25,10 +25,11 @@ public:
 
     void paint (Graphics&) override;
     void resized() override;
+    
+    void addAspect(String name);
 
 private:
-    AspectWidget a_ { "Foobar" };
-    AspectWidget b_ { "Fizbin" };
+    OwnedArray<AspectWidget> aspectWidgets_;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Aspects)
 };

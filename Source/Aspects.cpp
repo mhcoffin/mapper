@@ -16,8 +16,22 @@ Aspects::Aspects()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
-    addAndMakeVisible(&a_);
-    addAndMakeVisible(&b_);
+    
+    // temporary
+    auto durations = new AspectWidget{"Durations"};
+    durations->addItem("Staccatissimo");
+    durations->addItem("Staccato");
+    durations->addItem("Tenuto");
+    aspectWidgets_.add(durations);
+    
+    auto techniques = new AspectWidget{"Playing Techniques"};
+    techniques->addItem("Pizz");
+    techniques->addItem("Arco");
+    aspectWidgets_.add(techniques);
+    
+    for (auto aw : aspectWidgets_) {
+        addAndMakeVisible(aw);
+    }
 }
 
 Aspects::~Aspects()
@@ -49,7 +63,12 @@ void Aspects::resized()
     // This method is where you should set the bounds of any child
     // components that your component contains..
     auto bounds = getLocalBounds();
-    a_.setBounds(bounds.removeFromLeft(200));
-    b_.setBounds(bounds.removeFromLeft(200));
+    for (auto a : aspectWidgets_) {
+        a->setBounds(bounds.removeFromLeft(200));
+    }
+}
 
+void Aspects::addAspect(String name)
+{
+    aspectWidgets_.add(new AspectWidget{name});
 }
