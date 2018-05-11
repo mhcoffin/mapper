@@ -17,12 +17,12 @@ AspectWidget::AspectWidget(std::shared_ptr<Aspect> model)
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
     model_ = model;
-    buildFromModel();
+
     addButton_ = std::make_shared<TextButton>("+");
     addButton_->setColour(TextButton::buttonColourId, Colours::white);
     addButton_->setColour(TextButton::textColourOffId, Colours::red);
     
-    group_.addAndMakeVisible(addButton_.get());
+    buildFromModel();
 
     addAndMakeVisible(group_);
     
@@ -48,6 +48,7 @@ void AspectWidget::buildFromModel()
         buttons_.push_back(button);
         group_.addAndMakeVisible(button.get());
     }
+    group_.addAndMakeVisible(addButton_.get());
 }
 
 void AspectWidget::paint (Graphics& g)
