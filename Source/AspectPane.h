@@ -30,7 +30,7 @@ public:
     void addAspect(String name);
 
 private:
-    OwnedArray<AspectWidget> aspectWidgets_;
+    std::vector<std::shared_ptr<AspectWidget>> aspectWidgets_;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectPane)
 };

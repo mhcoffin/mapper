@@ -27,9 +27,9 @@ public:
 
 private:
     std::shared_ptr<Aspect> model_;
-    
+    std::vector<std::shared_ptr<Button>> buttons_;
+    std::shared_ptr<Button> addButton_;
     GroupComponent group_;
-    OwnedArray<TextButton> items_;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectWidget)
 };

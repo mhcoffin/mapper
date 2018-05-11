@@ -18,11 +18,19 @@ AspectWidget::AspectWidget(std::shared_ptr<Aspect> model)
     // initialise any special settings that your component needs.
     model_ = model;
     group_.setText(model_->getName());
+    
     for (auto item : model_->getItems())
     {
-        auto button = new ToggleButton(item);
-        group_.addChildComponent(button);
+        auto button = std::make_shared<TextButton>(item);
+        buttons_.push_back(button);
+        group_.addAndMakeVisible(button.get());
     }
+    
+    addButton_ = std::make_shared<TextButton>("+");
+    addButton_->setColour(TextButton::buttonColourId, Colours::white);
+    addButton_->setColour(TextButton::textColourOffId, Colours::red);
+    addButton_->addListener(nullptr);
+    group_.addAndMakeVisible(addButton_.get());
     
     addAndMakeVisible(group_);
     
@@ -51,8 +59,9 @@ void AspectWidget::resized()
     
     group_.setBounds(getLocalBounds().reduced(5));
     auto groupBounds = group_.getLocalBounds().withTop(20).reduced(5);
-    for (auto button : items_)
+    for (auto button : buttons_)
     {
         button->setBounds(groupBounds.removeFromTop(40).reduced(2));
     }
+    addButton_->setBounds(groupBounds.removeFromBottom(40).removeFromLeft(40));
 }

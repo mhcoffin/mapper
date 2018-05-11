@@ -21,12 +21,12 @@ AspectPane::AspectPane(std::shared_ptr<AspectSet> model)
     
     for (auto aspect : model->getAspects())
     {
-        auto aw = new AspectWidget{aspect};
-        aspectWidgets_.add(aw);
+        auto aw = std::make_shared<AspectWidget>(aspect);
+        aspectWidgets_.push_back(aw);
     }
     
     for (auto aw : aspectWidgets_) {
-        addAndMakeVisible(aw);
+        addAndMakeVisible(aw.get());
     }
 }
 
