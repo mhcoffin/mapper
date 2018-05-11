@@ -19,7 +19,7 @@ AspectPane::AspectPane()
     // initialise any special settings that your component needs.
     
     // temporary
-    auto durationModel = std::make_shared<AspectModel> ();
+    auto durationModel = std::shared_ptr<AspectModel>(new AspectModel{});
     durationModel->setName("Duration");
     
     auto durations = new AspectWidget{durationModel};
@@ -43,15 +43,8 @@ void AspectPane::paint (Graphics& g)
        drawing code..
     */
 
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
+    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
 
-    g.setColour (Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("Aspects", getLocalBounds(),
-                Justification::centred, true);   // draw some placeholder text
 }
 
 void AspectPane::resized()

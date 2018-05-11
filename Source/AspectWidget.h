@@ -27,6 +27,7 @@ public:
 
 private:
     std::shared_ptr<AspectModel> model_;
+    
     GroupComponent group_;
     OwnedArray<TextButton> items_;
     

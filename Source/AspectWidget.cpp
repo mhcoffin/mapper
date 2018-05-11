@@ -18,11 +18,15 @@ AspectWidget::AspectWidget(std::shared_ptr<AspectModel> model)
     // initialise any special settings that your component needs.
     model_ = model;
     group_.setText(model_->getName());
+    for (auto item : model_->getItems())
+    {
+        auto button = new ToggleButton(item);
+        group_.addChildComponent(button);
+    }
+    
     addAndMakeVisible(group_);
     
     model_->addNameChangeListener([&](String name) { group_.setText(name); });
-    
-    
 }
 
 AspectWidget::~AspectWidget()

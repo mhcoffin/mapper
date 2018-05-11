@@ -7,6 +7,7 @@
 */
 
 #include "MainComponent.h"
+#include "AspectModel.h"
 
 const auto ASPECTS = 0;
 const auto RESIZER_BAR = 1;
@@ -22,10 +23,18 @@ MainComponent::MainComponent()
     addAndMakeVisible(resizerBar);
     
     stretchableLayoutManager.setItemLayout(ASPECTS, -0.1, -0.9, -0.5);
-    stretchableLayoutManager.setItemLayout(RESIZER_BAR, RESIZER_BAR_THICKNESS, RESIZER_BAR_THICKNESS,RESIZER_BAR_THICKNESS);
+    stretchableLayoutManager.setItemLayout(
+        RESIZER_BAR, RESIZER_BAR_THICKNESS, RESIZER_BAR_THICKNESS,RESIZER_BAR_THICKNESS);
     stretchableLayoutManager.setItemLayout(CONTROLS, -0.1, -0.9, -0.5);
     
     setSize (1000, 1000);
+    
+    // Set up test
+    auto model = ScopedPointer<AspectModel>(new AspectModel());
+    model->setName("Durations");
+    model->addItem("Staccato");
+    model->addItem("Tenuto");
+    
 }
 
 MainComponent::~MainComponent()
