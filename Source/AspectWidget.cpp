@@ -17,28 +17,37 @@ AspectWidget::AspectWidget(std::shared_ptr<Aspect> model)
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
     model_ = model;
-    group_.setText(model_->getName());
-    
-    for (auto item : model_->getItems())
-    {
-        auto button = std::make_shared<TextButton>(item);
-        buttons_.push_back(button);
-        group_.addAndMakeVisible(button.get());
-    }
-    
+    buildFromModel();
     addButton_ = std::make_shared<TextButton>("+");
     addButton_->setColour(TextButton::buttonColourId, Colours::white);
     addButton_->setColour(TextButton::textColourOffId, Colours::red);
-    addButton_->addListener(nullptr);
-    group_.addAndMakeVisible(addButton_.get());
     
+    group_.addAndMakeVisible(addButton_.get());
+
     addAndMakeVisible(group_);
     
-    model_->addNameChangeListener([&](String name) { group_.setText(name); });
+    addButton_->onClick = [this](){model_->addItem("Foobar");};
+    model_->addChangeListener([this]() {buildFromModel(); resized(); });
 }
 
 AspectWidget::~AspectWidget()
 {
+}
+
+void AspectWidget::buildFromModel()
+{
+    std::cout << "Building widget " << group_.getText() << "\n";
+    
+    group_.setText(model_->getName());
+    group_.removeAllChildren();
+    buttons_.clear();
+    for (auto item : model_->getItems())
+    {
+        std::cout << "  adding " << item << "\n";
+        auto button = std::make_shared<TextButton>(item);
+        buttons_.push_back(button);
+        group_.addAndMakeVisible(button.get());
+    }
 }
 
 void AspectWidget::paint (Graphics& g)

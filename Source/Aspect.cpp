@@ -26,13 +26,14 @@ String Aspect::getName() const
 
 void Aspect::setName(const String& name)
 {
-    std::cout<< name_ << "\n";
     name_ = name;
+    notify();
 }
 
 void Aspect::addItem(const String& item)
 {
     items_.push_back(item);
+    notify();
 }
 
 const std::vector<const String> Aspect::getItems() const
@@ -40,9 +41,18 @@ const std::vector<const String> Aspect::getItems() const
     return items_;
 }
 
-void Aspect::addNameChangeListener(std::function<void(String)> callback)
+void Aspect::addChangeListener(std::function<void()> callback)
 {
     listeners_.push_back(callback);
+}
+
+void Aspect::notify()
+{
+    for (auto listener : listeners_)
+    {
+        std::cout << "notifying listeners\n";
+        listener();
+    }
 }
 
 

@@ -24,8 +24,10 @@ public:
 
     void paint (Graphics&) override;
     void resized() override;
+    
 
 private:
+    void buildFromModel();
     std::shared_ptr<Aspect> model_;
     std::vector<std::shared_ptr<Button>> buttons_;
     std::shared_ptr<Button> addButton_;

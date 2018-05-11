@@ -25,13 +25,14 @@ public:
     void addItem(const String& item);
     const std::vector<const String> getItems() const;
     
-    void addNameChangeListener(std::function<void(String)> callback);
+    void addChangeListener(std::function<void()> callback);
     
 private:
     String name_;
     std::vector<const String> items_;
     
-    std::vector<std::function<void(String)>> listeners_;
+    void notify();
+    std::vector<std::function<void()>> listeners_;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Aspect)
 };
