@@ -12,7 +12,7 @@
 #include "AspectWidget.h"
 
 //==============================================================================
-AspectWidget::AspectWidget(std::shared_ptr<AspectModel> model)
+AspectWidget::AspectWidget(std::shared_ptr<Aspect> model)
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.

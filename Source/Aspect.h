@@ -13,11 +13,11 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 
 /** Model for a single aspect. */
-class AspectModel
+class Aspect
 {
 public:
-    AspectModel();
-    ~AspectModel();
+    Aspect();
+    ~Aspect();
     
     String getName() const;
     void setName(const String& name);
@@ -33,5 +33,5 @@ private:
     
     std::vector<std::function<void(String)>> listeners_;
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectModel)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Aspect)
 };

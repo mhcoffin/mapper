@@ -31,7 +31,7 @@ public:
 private:
     //==============================================================================
     // Your private member variables go here...
-    AspectPane aspects;
+    std::shared_ptr<AspectPane> aspects_;
     ControlPane controls;
     
     StretchableLayoutManager stretchableLayoutManager;

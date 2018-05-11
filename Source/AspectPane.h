@@ -12,6 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "AspectWidget.h"
+#include "AspectSet.h"
 
 //==============================================================================
 /*
@@ -20,7 +21,7 @@
 class AspectPane    : public Component
 {
 public:
-    AspectPane();
+    AspectPane(std::shared_ptr<AspectSet> model);
     ~AspectPane();
 
     void paint (Graphics&) override;

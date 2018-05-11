@@ -8,39 +8,39 @@
   ==============================================================================
 */
 
-#include "AspectModel.h"
+#include "Aspect.h"
 
-AspectModel::AspectModel()
+Aspect::Aspect()
 {
     name_ = "";
 }
 
-AspectModel::~AspectModel()
+Aspect::~Aspect()
 {
 }
 
-String AspectModel::getName() const
+String Aspect::getName() const
 {
     return name_;
 }
 
-void AspectModel::setName(const String& name)
+void Aspect::setName(const String& name)
 {
     std::cout<< name_ << "\n";
     name_ = name;
 }
 
-void AspectModel::addItem(const String& item)
+void Aspect::addItem(const String& item)
 {
     items_.push_back(item);
 }
 
-const std::vector<const String> AspectModel::getItems() const
+const std::vector<const String> Aspect::getItems() const
 {
     return items_;
 }
 
-void AspectModel::addNameChangeListener(std::function<void(String)> callback)
+void Aspect::addNameChangeListener(std::function<void(String)> callback)
 {
     listeners_.push_back(callback);
 }

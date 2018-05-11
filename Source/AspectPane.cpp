@@ -10,20 +10,20 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "AspectPane.h"
-#include "AspectModel.h"
+#include "AspectSet.h"
+#include "Aspect.h"
 
 //==============================================================================
-AspectPane::AspectPane()
+AspectPane::AspectPane(std::shared_ptr<AspectSet> model)
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
     
-    // temporary
-    auto durationModel = std::shared_ptr<AspectModel>(new AspectModel{});
-    durationModel->setName("Duration");
-    
-    auto durations = new AspectWidget{durationModel};
-    aspectWidgets_.add(durations);
+    for (auto aspect : model->getAspects())
+    {
+        auto aw = new AspectWidget{aspect};
+        aspectWidgets_.add(aw);
+    }
     
     for (auto aw : aspectWidgets_) {
         addAndMakeVisible(aw);
