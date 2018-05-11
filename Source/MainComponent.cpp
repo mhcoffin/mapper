@@ -30,7 +30,8 @@ MainComponent::MainComponent()
     setSize (1000, 1000);
     
     // Set up test
-    auto model = ScopedPointer<AspectModel>(new AspectModel());
+    // auto model = ScopedPointer<AspectModel>(new AspectModel());
+    auto model = std::make_unique<AspectModel>();
     model->setName("Durations");
     model->addItem("Staccato");
     model->addItem("Tenuto");
