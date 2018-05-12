@@ -26,7 +26,7 @@ AspectWidget::AspectWidget(std::shared_ptr<Aspect> model)
 
     addAndMakeVisible(group_);
     
-    addButton_->onClick = [this](){model_->addItem("Foobar");};
+    addButton_->onClick = [this](){ getAndAddItem();};
     model_->addChangeListener([this]() {buildFromModel(); resized(); });
 }
 
@@ -34,16 +34,17 @@ AspectWidget::~AspectWidget()
 {
 }
 
+void AspectWidget::getAndAddItem() {
+    model_->addItem("Foobar");
+}
+
 void AspectWidget::buildFromModel()
 {
-    std::cout << "Building widget " << group_.getText() << "\n";
-    
     group_.setText(model_->getName());
     group_.removeAllChildren();
     buttons_.clear();
     for (auto item : model_->getItems())
     {
-        std::cout << "  adding " << item << "\n";
         auto button = std::make_shared<TextButton>(item);
         buttons_.push_back(button);
         group_.addAndMakeVisible(button.get());

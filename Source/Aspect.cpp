@@ -50,7 +50,6 @@ void Aspect::notify()
 {
     for (auto listener : listeners_)
     {
-        std::cout << "notifying listeners\n";
         listener();
     }
 }

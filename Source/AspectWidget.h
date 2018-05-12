@@ -15,6 +15,8 @@
 
 //==============================================================================
 /*
+ * Widget that dislays a single aspect of note production.
+ * TODO: rewrite to not use a group or buttons.
 */
 class AspectWidget    : public Component
 {
@@ -32,6 +34,8 @@ private:
     std::vector<std::shared_ptr<Button>> buttons_;
     std::shared_ptr<Button> addButton_;
     GroupComponent group_;
-    
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectWidget)
+
+    void getAndAddItem();
 };

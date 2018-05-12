@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT name="mapper" projectType="guiapp" jucerVersion="5.3.2" id="nPWiBw">
+<JUCERPROJECT name="mapper" projectType="guiapp" jucerVersion="5.3.2" id="nPWiBw"
+              cppLanguageStandard="17">
   <MAINGROUP id="im4P9p" name="mapper">
     <GROUP id="{AC22F4E3-E788-FAE8-0055-C4163F8D615D}" name="Source">
       <FILE id="nTxbYD" name="AspectSet.cpp" compile="1" resource="0" file="Source/AspectSet.cpp"/>
