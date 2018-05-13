@@ -17,17 +17,6 @@ AspectWidget::AspectWidget(std::shared_ptr<Aspect> model)
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
     model_ = model;
-
-    addButton_ = std::make_shared<TextButton>("+");
-    addButton_->setColour(TextButton::buttonColourId, Colours::white);
-    addButton_->setColour(TextButton::textColourOffId, Colours::red);
-    
-    buildFromModel();
-
-    addAndMakeVisible(group_);
-    
-    addButton_->onClick = [this](){ getAndAddItem();};
-    model_->addChangeListener([this]() {buildFromModel(); resized(); });
 }
 
 AspectWidget::~AspectWidget()
@@ -36,20 +25,6 @@ AspectWidget::~AspectWidget()
 
 void AspectWidget::getAndAddItem() {
     model_->addItem("Foobar");
-}
-
-void AspectWidget::buildFromModel()
-{
-    group_.setText(model_->getName());
-    group_.removeAllChildren();
-    buttons_.clear();
-    for (auto item : model_->getItems())
-    {
-        auto button = std::make_shared<TextButton>(item);
-        buttons_.push_back(button);
-        group_.addAndMakeVisible(button.get());
-    }
-    group_.addAndMakeVisible(addButton_.get());
 }
 
 void AspectWidget::paint (Graphics& g)
@@ -61,6 +36,24 @@ void AspectWidget::paint (Graphics& g)
        drawing code..
     */
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+    auto bounds = getLocalBounds().reduced(10);
+    g.setColour(Colours::white);
+    g.drawRect(bounds.reduced(1), 1.0);
+
+    auto header = bounds.removeFromTop(30);
+
+    g.setColour(Colours::yellow);
+    g.fillRect(header.reduced(2));
+    g.setColour(Colours::black);
+    g.drawText(model_->getName(), header.reduced(4, 0), Justification::centredLeft, true);
+
+    for (auto item : model_->getItems()) {
+        auto itemBounds = bounds.removeFromTop(25);
+        g.setColour(Colours::grey);
+        g.fillRect(itemBounds.reduced(2));
+        g.setColour(Colours::white);
+        g.drawText(item, itemBounds.reduced(4, 0), Justification::centredLeft, true);
+    }
 }
 
 void AspectWidget::resized()
@@ -68,11 +61,4 @@ void AspectWidget::resized()
     // This method is where you should set the bounds of any child
     // components that your component contains..
     
-    group_.setBounds(getLocalBounds().reduced(5));
-    auto groupBounds = group_.getLocalBounds().withTop(20).reduced(5);
-    for (auto button : buttons_)
-    {
-        button->setBounds(groupBounds.removeFromTop(40).reduced(2));
-    }
-    addButton_->setBounds(groupBounds.removeFromBottom(40).removeFromLeft(40));
 }

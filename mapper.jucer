@@ -4,6 +4,9 @@
               cppLanguageStandard="17">
   <MAINGROUP id="im4P9p" name="mapper">
     <GROUP id="{AC22F4E3-E788-FAE8-0055-C4163F8D615D}" name="Source">
+      <FILE id="xSeLKu" name="AspectOption.cpp" compile="1" resource="0"
+            file="Source/AspectOption.cpp"/>
+      <FILE id="AV3cPN" name="AspectOption.h" compile="0" resource="0" file="Source/AspectOption.h"/>
       <FILE id="nTxbYD" name="AspectSet.cpp" compile="1" resource="0" file="Source/AspectSet.cpp"/>
       <FILE id="V7Xr2G" name="AspectSet.h" compile="0" resource="0" file="Source/AspectSet.h"/>
       <FILE id="cuAQxY" name="Aspect.cpp" compile="1" resource="0" file="Source/Aspect.cpp"/>
