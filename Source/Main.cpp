@@ -18,7 +18,7 @@ public:
     //==============================================================================
     mapperApplication() {}
 
-    const String getApplicationName() override       { return ProjectInfo::projectName; }
+    const String getApplicationName() override       { return "Timbre"; }
     const String getApplicationVersion() override    { return ProjectInfo::versionString; }
     bool moreThanOneInstanceAllowed() override       { return true; }
 

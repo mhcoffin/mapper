@@ -29,29 +29,27 @@ void AspectWidget::getAndAddItem() {
 
 void AspectWidget::paint (Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
+    auto mainColor = Colours::yellow;
+    auto darkColor = Colours::darkgrey;
+    auto darkHighlight = Colours::forestgreen;
 
-       You should replace everything in this method with your own
-       drawing code..
-    */
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     auto bounds = getLocalBounds().reduced(10);
-    g.setColour(Colours::white);
+    g.setColour(mainColor);
     g.drawRect(bounds.reduced(1), 1.0);
 
     auto header = bounds.removeFromTop(30);
 
-    g.setColour(Colours::yellow);
+    g.setColour(mainColor);
     g.fillRect(header.reduced(2));
     g.setColour(Colours::black);
     g.drawText(model_->getName(), header.reduced(4, 0), Justification::centredLeft, true);
 
     for (auto item : model_->getItems()) {
         auto itemBounds = bounds.removeFromTop(25);
-        g.setColour(Colours::grey);
+        g.setColour(darkColor);
         g.fillRect(itemBounds.reduced(2));
-        g.setColour(Colours::white);
+        g.setColour(mainColor);
         g.drawText(item, itemBounds.reduced(4, 0), Justification::centredLeft, true);
     }
 }
