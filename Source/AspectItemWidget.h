@@ -11,30 +11,34 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Ids.h"
+#include "AspectItem.h"
 
 //==============================================================================
 /*
  * Widget for a single aspect item.
 */
-class AspectItemWidget    : public Component
-{
+class AspectItemWidget : public Component {
 public:
-    AspectItemWidget(Id id);
+    AspectItemWidget(std::shared_ptr<AspectItem>);
+
     ~AspectItemWidget();
 
-    void paint (Graphics&) override;
+    void paint(Graphics &) override;
+
     void resized() override;
 
-    void setNameChangeListener(std::function<void(String)> listener) { nameChangeListener_ = listener; }
-    String getName() { return name_; }
-    Id getId() { return id_; }
+    /** Add a name-change listener */
+    void setNameChangeListener(std::function<void(String)>);
 
+    /** Returns the name of this item */
+    String name();
+
+    /* Returns true if this item is selected */
+    bool isSelected();
 
 private:
-    Id id_;
+    std::shared_ptr<AspectItem> item_;
     bool isSelected_;
-    String name_;
     std::function<void(String)> nameChangeListener_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectItemWidget)

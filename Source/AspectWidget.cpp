@@ -17,14 +17,15 @@ AspectWidget::AspectWidget(std::shared_ptr<Aspect> model)
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
     model_ = model;
+    for (auto item : model_->getItems()) {
+        auto widget = std::make_shared<AspectItemWidget>(item);
+        itemWidgets_.push_back(widget);
+        addAndMakeVisible(widget.get());
+    }
 }
 
 AspectWidget::~AspectWidget()
 {
-}
-
-void AspectWidget::getAndAddItem() {
-    model_->addItem("Foobar");
 }
 
 void AspectWidget::paint (Graphics& g)
@@ -34,9 +35,9 @@ void AspectWidget::paint (Graphics& g)
     auto darkHighlight = Colours::forestgreen;
 
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
-    auto bounds = getLocalBounds().reduced(10);
+    auto bounds = getLocalBounds().reduced(5);
     g.setColour(mainColor);
-    g.drawRect(bounds.reduced(1), 1.0);
+    g.drawRect(bounds, 1.0);
 
     auto header = bounds.removeFromTop(30);
 
@@ -44,19 +45,17 @@ void AspectWidget::paint (Graphics& g)
     g.fillRect(header.reduced(2));
     g.setColour(Colours::black);
     g.drawText(model_->getName(), header.reduced(4, 0), Justification::centredLeft, true);
-
-    for (auto item : model_->getItems()) {
-        auto itemBounds = bounds.removeFromTop(25);
-        g.setColour(darkColor);
-        g.fillRect(itemBounds.reduced(2));
-        g.setColour(mainColor);
-        g.drawText(item, itemBounds.reduced(4, 0), Justification::centredLeft, true);
-    }
 }
 
 void AspectWidget::resized()
 {
     // This method is where you should set the bounds of any child
     // components that your component contains..
-    
+
+    auto bounds = getLocalBounds().reduced(5);
+    bounds.removeFromTop(30);
+    for (auto widget : itemWidgets_) {
+        auto itemBounds = bounds.removeFromTop(25).reduced(2);
+        widget->setBounds(itemBounds);
+    }
 }

@@ -23,16 +23,16 @@ MainComponent::MainComponent()
     auto model = std::make_shared<AspectSet>();
     auto duration = std::make_shared<Aspect>();
     duration->setName("Duration");
-    duration->addItem("staccato");
-    duration->addItem("tenuto");
+    duration->addItem(std::make_shared<AspectItem>("staccato"));
+    duration->addItem(std::make_shared<AspectItem>("tenuto"));
     
     model->addAspect(duration);
     
     auto vib = std::make_shared<Aspect>();
     vib->setName("Vibrato");
-    vib->addItem("sans vibrato");
-    vib->addItem("vibrato");
-    vib->addItem("molto vibrato");
+    vib->addItem(std::make_shared<AspectItem>("sans vibrato"));
+    vib->addItem(std::make_shared<AspectItem>("vibrato"));
+    vib->addItem(std::make_shared<AspectItem>("molto vibrato"));
     model->addAspect(vib);
     
     aspects_ = std::make_shared<AspectPane>(model);

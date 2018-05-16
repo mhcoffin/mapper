@@ -12,10 +12,10 @@
 #include "AspectItemWidget.h"
 
 //==============================================================================
-AspectItemWidget::AspectItemWidget(int64 id) : id_(id), isSelected_(false), name_("")
-{
+AspectItemWidget::AspectItemWidget(std::shared_ptr<AspectItem> item) : item_(item) {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
+
 
 }
 
@@ -29,7 +29,7 @@ void AspectItemWidget::paint (Graphics& g)
     g.setColour(Colours::darkgrey);
     g.fillRect(bounds);
     g.setColour(Colours::yellow);
-    g.drawText(name_, bounds.reduced(4), Justification::centredLeft, true);
+    g.drawText(item_->getName(), bounds.reduced(4), Justification::centredLeft, true);
 }
 
 void AspectItemWidget::resized()

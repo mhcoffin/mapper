@@ -12,6 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Aspect.h"
+#include "AspectItemWidget.h"
 
 //==============================================================================
 /*
@@ -30,8 +31,9 @@ public:
 
 private:
     void buildFromModel();
+
     std::shared_ptr<Aspect> model_;
-    std::vector<std::shared_ptr<Button>> buttons_;
+    std::vector<std::shared_ptr<AspectItemWidget>> itemWidgets_;
     std::shared_ptr<Button> addButton_;
     GroupComponent group_;
 

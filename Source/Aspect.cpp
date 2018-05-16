@@ -30,13 +30,13 @@ void Aspect::setName(const String& name)
     notify();
 }
 
-void Aspect::addItem(const String& item)
+void Aspect::addItem(std::shared_ptr<AspectItem> item)
 {
     items_.push_back(item);
     notify();
 }
 
-const std::vector<const String> Aspect::getItems() const
+std::vector<std::shared_ptr<AspectItem>> Aspect::getItems() const
 {
     return items_;
 }

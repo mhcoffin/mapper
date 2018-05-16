@@ -11,6 +11,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "AspectItem.h"
 
 /** Model for a single aspect. */
 class Aspect
@@ -22,14 +23,14 @@ public:
     String getName() const;
     void setName(const String& name);
     
-    void addItem(const String& item);
-    const std::vector<const String> getItems() const;
+    void addItem(std::shared_ptr<AspectItem> item);
+    std::vector<std::shared_ptr<AspectItem>> getItems() const;
     
     void addChangeListener(std::function<void()> callback);
     
 private:
     String name_;
-    std::vector<const String> items_;
+    std::vector<std::shared_ptr<AspectItem>> items_;
     
     void notify();
     std::vector<std::function<void()>> listeners_;
