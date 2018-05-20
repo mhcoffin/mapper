@@ -19,12 +19,6 @@ public:
     String getName() { return name_; }
     void setName(const String& n );
 
-    void addChangeListener(std::function<void()>);
-
 private:
     String name_;
-    std::vector<std::function<void()>> listeners_;
-
-    void notify();
-
 };

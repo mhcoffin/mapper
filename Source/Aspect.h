@@ -17,23 +17,23 @@
 class Aspect
 {
 public:
+    class Listener {
+    };
+
     Aspect();
     ~Aspect();
     
     String getName() const;
-    void setName(const String& name);
-    
+    void setName(const String&);
+    void addListener(Listener);
     void addItem(std::shared_ptr<AspectItem> item);
     std::vector<std::shared_ptr<AspectItem>> getItems() const;
-    
     void addChangeListener(std::function<void()> callback);
     
 private:
     String name_;
     std::vector<std::shared_ptr<AspectItem>> items_;
-    
-    void notify();
-    std::vector<std::function<void()>> listeners_;
-    
+    ListenerList<Listener> listeners;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Aspect)
 };
