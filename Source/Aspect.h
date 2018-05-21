@@ -11,29 +11,48 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "timbre.h"
 #include "AspectItem.h"
 
+namespace timbre {
+
 /** Model for a single aspect. */
-class Aspect
-{
+class Aspect {
 public:
     class Listener {
+        virtual ~Listener();
+
+        /** Called when the name of the aspect is changed */
+        virtual void nameChange(const String &name);
+
+        virtual void addItem(const AspectItem &item);
+
+        /** Called when an item is removed from the aspect */
+        virtual void removeItem(const AspectItem &item);
     };
 
     Aspect();
+
     ~Aspect();
-    
+
     String getName() const;
-    void setName(const String&);
-    void addListener(Listener);
-    void addItem(std::shared_ptr<AspectItem> item);
-    std::vector<std::shared_ptr<AspectItem>> getItems() const;
-    void addChangeListener(std::function<void()> callback);
-    
+
+    void setName(const String &);
+
+    void addListener(const Listener *);
+
+    void addItem(Ptr<AspectItem> item);
+
+    void removeItem(Ptr<AspectItem> item);
+
+    Array<Ptr<AspectItem>> getItems() const;
+
 private:
     String name_;
-    std::vector<std::shared_ptr<AspectItem>> items_;
-    ListenerList<Listener> listeners;
+    Array<Ptr<AspectItem>> items_;
+    ListenerList<Listener> listeners_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Aspect)
 };
+
+} // namespace timbre

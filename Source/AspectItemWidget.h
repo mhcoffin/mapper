@@ -11,35 +11,39 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "timbre.h"
 #include "AspectItem.h"
+
+namespace timbre {
 
 //==============================================================================
 /*
  * Widget for a single aspect item.
 */
-class AspectItemWidget : public Component {
+class AspectItemWidget : public Component, AspectItem::Listener {
 public:
-    AspectItemWidget(std::shared_ptr<AspectItem>);
-
+    AspectItemWidget(Ptr<AspectItem>);
     ~AspectItemWidget();
 
     void paint(Graphics &) override;
-
     void resized() override;
 
-    /** Add a name-change listener */
-    void setNameChangeListener(std::function<void(String)>);
-
-    /** Returns the name of this item */
-    String name();
-
-    /* Returns true if this item is selected */
-    bool isSelected();
 
 private:
-    std::shared_ptr<AspectItem> item_;
-    bool isSelected_;
-    std::function<void(String)> nameChangeListener_;
+    Ptr<AspectItem> item_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectItemWidget)
+
+    void name(const String &name) override;
+
+    void selected(bool selected) override;
+
+public:
+    void mouseUp(const MouseEvent &event) override;
+    void mouseDoubleClick(const MouseEvent &event) override;
+
+public:
+
 };
+
+} // namespace timbre

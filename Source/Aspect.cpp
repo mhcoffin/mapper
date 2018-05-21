@@ -10,34 +10,29 @@
 
 #include "Aspect.h"
 
-Aspect::Aspect()
-{
+namespace timbre {
+
+Aspect::Aspect() {
     name_ = "";
 }
 
-Aspect::~Aspect()
-{
+Aspect::~Aspect() {
 }
 
-String Aspect::getName() const
-{
+String Aspect::getName() const {
     return name_;
 }
 
-void Aspect::setName(const String& name)
-{
+void Aspect::setName(const String &name) {
     name_ = name;
 }
 
-void Aspect::addItem(std::shared_ptr<AspectItem> item)
-{
-    items_.push_back(item);
+void Aspect::addItem(Ptr<AspectItem> item) {
+    items_.add(item);
 }
 
-std::vector<std::shared_ptr<AspectItem>> Aspect::getItems() const
-{
+Array<Ptr<AspectItem>> Aspect::getItems() const {
     return items_;
 }
 
-
-
+}

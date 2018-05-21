@@ -13,29 +13,27 @@
 #include "AspectSet.h"
 #include "Aspect.h"
 
+namespace timbre {
+
 //==============================================================================
-AspectPane::AspectPane(std::shared_ptr<AspectSet> model)
-{
+AspectPane::AspectPane(Ptr<AspectSet> model) {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
-    
-    for (auto aspect : model->getAspects())
-    {
-        auto aw = std::make_shared<AspectWidget>(aspect);
-        aspectWidgets_.push_back(aw);
+
+    for (auto aspect : model->getAspects()) {
+        auto aw = make<AspectWidget>(aspect);
+        aspectWidgets_.add(aw);
     }
-    
+
     for (auto aw : aspectWidgets_) {
         addAndMakeVisible(aw.get());
     }
 }
 
-AspectPane::~AspectPane()
-{
+AspectPane::~AspectPane() {
 }
 
-void AspectPane::paint (Graphics& g)
-{
+void AspectPane::paint(Graphics &g) {
     /* This demo code just fills the component's background and
        draws some placeholder text to get you started.
 
@@ -43,16 +41,17 @@ void AspectPane::paint (Graphics& g)
        drawing code..
     */
 
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+    g.fillAll(getLookAndFeel().findColour(ResizableWindow::backgroundColourId));
 
 }
 
-void AspectPane::resized()
-{
+void AspectPane::resized() {
     // This method is where you should set the bounds of any child
     // components that your component contains..
     auto bounds = getLocalBounds();
     for (auto a : aspectWidgets_) {
         a->setBounds(bounds.removeFromLeft(200));
     }
+}
+
 }

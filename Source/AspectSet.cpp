@@ -10,12 +10,14 @@
 
 #include "AspectSet.h"
 
-void AspectSet::addAspect(std::shared_ptr<Aspect> aspect)
-{
-    aspects_.push_back(aspect);
+namespace timbre {
+
+void AspectSet::addAspect(Ptr<Aspect> aspect) {
+    aspects_.add(aspect);
 }
 
-std::vector<std::shared_ptr<Aspect>> AspectSet::getAspects() const
-{
+Array<Ptr<Aspect>> AspectSet::getAspects() const {
     return aspects_;
+}
+
 }

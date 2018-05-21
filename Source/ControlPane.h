@@ -11,20 +11,26 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "timbre.h"
 #include "AspectSet.h"
+
+namespace timbre {
 
 //==============================================================================
 /*
 */
-class ControlPane    : public Component
-{
+class ControlPane : public Component {
 public:
     ControlPane();
+
     ~ControlPane();
 
-    void paint (Graphics&) override;
+    void paint(Graphics &) override;
+
     void resized() override;
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ControlPane)
 };
+
+}

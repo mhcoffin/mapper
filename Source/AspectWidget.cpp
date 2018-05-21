@@ -11,30 +11,27 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "AspectWidget.h"
 
+namespace timbre {
+
 //==============================================================================
-AspectWidget::AspectWidget(std::shared_ptr<Aspect> model)
-{
+AspectWidget::AspectWidget(Ptr<Aspect> model) {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
     model_ = model;
     for (auto item : model_->getItems()) {
-        auto widget = std::make_shared<AspectItemWidget>(item);
-        itemWidgets_.push_back(widget);
+        auto widget = make<AspectItemWidget>(item);
+        itemWidgets_.add(widget);
         addAndMakeVisible(widget.get());
     }
 }
 
-AspectWidget::~AspectWidget()
-{
+AspectWidget::~AspectWidget() {
 }
 
-void AspectWidget::paint (Graphics& g)
-{
-    auto mainColor = Colours::yellow;
-    auto darkColor = Colours::darkgrey;
-    auto darkHighlight = Colours::forestgreen;
+void AspectWidget::paint(Graphics &g) {
+    auto mainColor = Colours::ghostwhite;
 
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+    g.fillAll(getLookAndFeel().findColour(ResizableWindow::backgroundColourId));
     auto bounds = getLocalBounds().reduced(5);
     g.setColour(mainColor);
     g.drawRect(bounds, 1.0);
@@ -44,11 +41,11 @@ void AspectWidget::paint (Graphics& g)
     g.setColour(mainColor);
     g.fillRect(header.reduced(2));
     g.setColour(Colours::black);
+    g.setFont(14);
     g.drawText(model_->getName(), header.reduced(4, 0), Justification::centredLeft, true);
 }
 
-void AspectWidget::resized()
-{
+void AspectWidget::resized() {
     // This method is where you should set the bounds of any child
     // components that your component contains..
 
@@ -58,4 +55,6 @@ void AspectWidget::resized()
         auto itemBounds = bounds.removeFromTop(25).reduced(2);
         widget->setBounds(itemBounds);
     }
+}
+
 }

@@ -9,18 +9,21 @@
 */
 
 #pragma once
-#pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "timbre.h"
 #include "Aspect.h"
 
-class AspectSet
-{
+namespace timbre {
+
+class AspectSet {
 public:
-    void addAspect(std::shared_ptr<Aspect> aspect);
-    std::vector<std::shared_ptr<Aspect>> getAspects() const;
-    
+    void addAspect(Ptr<Aspect> aspect);
+
+    Array<Ptr<Aspect>> getAspects() const;
+
 private:
-    std::vector<std::shared_ptr<Aspect>> aspects_;
+    Array<Ptr<Aspect>> aspects_;
 };
 
+}

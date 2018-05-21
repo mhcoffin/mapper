@@ -11,26 +11,32 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "timbre.h"
 #include "AspectWidget.h"
 #include "AspectSet.h"
+
+namespace timbre {
 
 //==============================================================================
 /*
  * Some new documentation...
 */
-class AspectPane    : public Component
-{
+class AspectPane : public Component {
 public:
-    AspectPane(std::shared_ptr<AspectSet> model);
+    AspectPane(Ptr<AspectSet> model);
+
     ~AspectPane();
 
-    void paint (Graphics&) override;
+    void paint(Graphics &) override;
+
     void resized() override;
-    
+
     void addAspect(String name);
 
 private:
-    std::vector<std::shared_ptr<AspectWidget>> aspectWidgets_;
-    
+    Array<Ptr<AspectWidget>> aspectWidgets_;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectPane)
 };
+
+}
