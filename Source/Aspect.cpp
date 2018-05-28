@@ -13,18 +13,17 @@
 namespace timbre {
 
 Aspect::Aspect() {
-    name_ = "";
 }
 
 Aspect::~Aspect() {
 }
 
 String Aspect::getName() const {
-    return name_;
+    return header_.getName();
 }
 
 void Aspect::setName(const String &name) {
-    name_ = name;
+    header_.setName(name);
 }
 
 void Aspect::addItem(std::shared_ptr<AspectItem> item) {
@@ -35,4 +34,7 @@ Array<std::shared_ptr<AspectItem>> Aspect::getItems() const {
     return items_;
 }
 
+Aspect::Listener::~Listener() {
 }
+
+} // namespace timbre

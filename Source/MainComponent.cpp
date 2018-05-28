@@ -22,6 +22,7 @@ const auto RESIZER_BAR_THICKNESS = 2;
 MainComponent::MainComponent() {
     // Set up test
     auto model = std::make_shared<AspectSet>();
+
     auto duration = std::make_shared<Aspect>();
     duration->setName("Duration");
     duration->addItem(std::make_shared<AspectItem>("staccato"));

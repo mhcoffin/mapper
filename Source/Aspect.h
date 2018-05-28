@@ -16,6 +16,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "AspectItem.h"
+#include "Aspect.h"
+#include "AspectHeader.h"
 
 namespace timbre {
 
@@ -23,16 +25,17 @@ namespace timbre {
     class Aspect {
     public:
         class Listener {
+        public:
             virtual ~Listener();
 
             /** Called when the name of the aspect is changed */
-            virtual void changeName(const String &name);
+            virtual void changeName(const String &name) = 0;
 
             /** Called when an item is added. */
-            virtual void addItem(const AspectItem &item);
+            virtual void addItem(const AspectItem &item) = 0;
 
             /** Called when an item is removed from the aspect */
-            virtual void removeItem(const AspectItem &item);
+            virtual void removeItem(const AspectItem &item) = 0;
         };
 
         Aspect();
@@ -46,7 +49,7 @@ namespace timbre {
         Array<std::shared_ptr<AspectItem>> getItems() const;
 
     private:
-        String name_;
+        AspectHeader header_;
         Array<std::shared_ptr<AspectItem>> items_;
         ListenerList<Listener> listeners_;
 
