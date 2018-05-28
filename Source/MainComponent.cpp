@@ -21,22 +21,22 @@ const auto RESIZER_BAR_THICKNESS = 2;
 //==============================================================================
 MainComponent::MainComponent() {
     // Set up test
-    auto model = make<AspectSet>();
-    auto duration = make<Aspect>();
+    auto model = std::make_shared<AspectSet>();
+    auto duration = std::make_shared<Aspect>();
     duration->setName("Duration");
-    duration->addItem(make<AspectItem>("staccato"));
-    duration->addItem(make<AspectItem>("tenuto"));
+    duration->addItem(std::make_shared<AspectItem>("staccato"));
+    duration->addItem(std::make_shared<AspectItem>("tenuto"));
 
     model->addAspect(duration);
 
-    auto vib = make<Aspect>();
+    auto vib = std::make_shared<Aspect>();
     vib->setName("Vibrato");
-    vib->addItem(make<AspectItem>("sans vibrato"));
-    vib->addItem(make<AspectItem>("vibrato"));
-    vib->addItem(make<AspectItem>("molto vibrato"));
+    vib->addItem(std::make_shared<AspectItem>("sans vibrato"));
+    vib->addItem(std::make_shared<AspectItem>("vibrato"));
+    vib->addItem(std::make_shared<AspectItem>("molto vibrato"));
     model->addAspect(vib);
 
-    aspects_ = make<AspectPane>(model);
+    aspects_ = std::make_shared<AspectPane>(model);
 
     setOpaque(true);
     addAndMakeVisible(aspects_.get());

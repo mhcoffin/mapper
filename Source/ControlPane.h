@@ -11,7 +11,6 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "timbre.h"
 #include "AspectSet.h"
 
 namespace timbre {
@@ -22,11 +21,9 @@ namespace timbre {
 class ControlPane : public Component {
 public:
     ControlPane();
-
     ~ControlPane();
 
     void paint(Graphics &) override;
-
     void resized() override;
 
 private:

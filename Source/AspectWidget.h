@@ -11,7 +11,6 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "timbre.h"
 #include "Aspect.h"
 #include "AspectItemWidget.h"
 
@@ -19,26 +18,23 @@ namespace timbre {
 
 //==============================================================================
 /*
- * Widget that dislays a single aspect of note production.
- * TODO: rewrite to not use a group or buttons.
+ * Widget that displays a single aspect of note production.
 */
 class AspectWidget : public Component {
 public:
-    AspectWidget(Ptr<Aspect> model);
-
+    AspectWidget(std::shared_ptr<Aspect> model);
     ~AspectWidget();
 
     void paint(Graphics &) override;
-
     void resized() override;
 
 
 private:
     void buildFromModel();
 
-    Ptr<Aspect> model_;
-    Array<Ptr<AspectItemWidget>> itemWidgets_;
-    Ptr<Button> addButton_;
+    std::shared_ptr<Aspect> model_;
+    Array<std::shared_ptr<AspectItemWidget>> itemWidgets_;
+    std::shared_ptr<Button> addButton_;
     GroupComponent group_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectWidget)

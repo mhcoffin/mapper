@@ -27,11 +27,11 @@ void Aspect::setName(const String &name) {
     name_ = name;
 }
 
-void Aspect::addItem(Ptr<AspectItem> item) {
+void Aspect::addItem(std::shared_ptr<AspectItem> item) {
     items_.add(item);
 }
 
-Array<Ptr<AspectItem>> Aspect::getItems() const {
+Array<std::shared_ptr<AspectItem>> Aspect::getItems() const {
     return items_;
 }
 

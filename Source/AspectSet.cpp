@@ -12,11 +12,17 @@
 
 namespace timbre {
 
-void AspectSet::addAspect(Ptr<Aspect> aspect) {
+AspectSet::AspectSet() {
+}
+
+AspectSet::~AspectSet() {
+}
+
+void AspectSet::addAspect(std::shared_ptr<Aspect> aspect) {
     aspects_.add(aspect);
 }
 
-Array<Ptr<Aspect>> AspectSet::getAspects() const {
+Array<std::shared_ptr<Aspect>> AspectSet::getAspects() const {
     return aspects_;
 }
 

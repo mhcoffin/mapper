@@ -10,7 +10,7 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "timbre.h"
+
 
 namespace timbre {
 
@@ -22,10 +22,10 @@ public:
         virtual ~Listener() {}
 
         // Called if the name is changed
-        virtual void name(const String& name) = 0;
+        virtual void changeName(const String& newName) = 0;
 
         // Called if the item is selected or de-selected
-        virtual void selected(bool selected) = 0;
+        virtual void setSelected(bool selected) = 0;
     };
 
     AspectItem(String name);
@@ -34,10 +34,11 @@ public:
     const String& getName() const;
     void setName(const String &name);
 
-    bool selected() const;
+    bool isSelected() const;
     void setSelected(bool selected);
 
     void addListener(Listener*);
+    void removeListener(Listener*);
 
 private:
     String name_;

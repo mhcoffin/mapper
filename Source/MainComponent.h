@@ -9,7 +9,6 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "timbre.h"
 #include "AspectPane.h"
 #include "ControlPane.h"
 
@@ -34,7 +33,7 @@ public:
 private:
     //==============================================================================
     // Your private member variables go here...
-    Ptr<AspectPane> aspects_;
+    std::shared_ptr<AspectPane> aspects_;
     ControlPane controls;
 
     StretchableLayoutManager stretchableLayoutManager;

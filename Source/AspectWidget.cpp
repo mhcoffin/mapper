@@ -14,12 +14,12 @@
 namespace timbre {
 
 //==============================================================================
-AspectWidget::AspectWidget(Ptr<Aspect> model) {
+AspectWidget::AspectWidget(std::shared_ptr<Aspect> model) {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
     model_ = model;
     for (auto item : model_->getItems()) {
-        auto widget = make<AspectItemWidget>(item);
+        auto widget = std::make_shared<AspectItemWidget>(item);
         itemWidgets_.add(widget);
         addAndMakeVisible(widget.get());
     }
