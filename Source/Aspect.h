@@ -17,7 +17,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "AspectItem.h"
 #include "Aspect.h"
-#include "AspectHeader.h"
+#include "AspectMetadata.h"
 
 namespace timbre {
 
@@ -44,12 +44,13 @@ namespace timbre {
         String getName() const;
         void setName(const String &);
         void addListener(const Listener *);
+        AspectMetadata* getHeader();
         void addItem(std::shared_ptr<AspectItem> item);
         void removeItem(std::shared_ptr<AspectItem> item);
         Array<std::shared_ptr<AspectItem>> getItems() const;
 
     private:
-        AspectHeader header_;
+        AspectMetadata header_;
         Array<std::shared_ptr<AspectItem>> items_;
         ListenerList<Listener> listeners_;
 

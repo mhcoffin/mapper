@@ -13,6 +13,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Aspect.h"
 #include "AspectItemWidget.h"
+#include "AspectHeaderWidget.h"
 
 namespace timbre {
 
@@ -33,6 +34,8 @@ private:
     void buildFromModel();
 
     std::shared_ptr<Aspect> model_;
+
+    std::shared_ptr<AspectHeaderWidget> headerWidget_;
     Array<std::shared_ptr<AspectItemWidget>> itemWidgets_;
     std::shared_ptr<Button> addButton_;
     GroupComponent group_;

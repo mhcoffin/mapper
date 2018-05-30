@@ -18,6 +18,10 @@ AspectWidget::AspectWidget(std::shared_ptr<Aspect> model) {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
     model_ = model;
+
+    headerWidget_ = std::make_shared<AspectHeaderWidget>(model_->getHeader());
+    addAndMakeVisible(headerWidget_.get());
+
     for (auto item : model_->getItems()) {
         auto widget = std::make_shared<AspectItemWidget>(item);
         itemWidgets_.add(widget);
@@ -35,14 +39,6 @@ void AspectWidget::paint(Graphics &g) {
     auto bounds = getLocalBounds().reduced(5);
     g.setColour(mainColor);
     g.drawRect(bounds, 1.0);
-
-    auto header = bounds.removeFromTop(30);
-
-    g.setColour(mainColor);
-    g.fillRect(header.reduced(2));
-    g.setColour(Colours::black);
-    g.setFont(14);
-    g.drawText(model_->getName(), header.reduced(4, 0), Justification::centredLeft, true);
 }
 
 void AspectWidget::resized() {
@@ -50,7 +46,7 @@ void AspectWidget::resized() {
     // components that your component contains..
 
     auto bounds = getLocalBounds().reduced(5);
-    bounds.removeFromTop(30);
+    headerWidget_->setBounds(bounds.removeFromTop(30));
     for (auto widget : itemWidgets_) {
         auto itemBounds = bounds.removeFromTop(25).reduced(2);
         widget->setBounds(itemBounds);

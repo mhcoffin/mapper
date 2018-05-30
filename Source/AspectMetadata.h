@@ -11,7 +11,7 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class AspectHeader
+class AspectMetadata
 {
 public:
     class Listener {
@@ -20,8 +20,8 @@ public:
         virtual void changeName(const String& name) = 0;
     };
 
-    AspectHeader();
-    ~AspectHeader();
+    AspectMetadata();
+    ~AspectMetadata();
 
     const String& getName() const;
     void setName(const String& name);

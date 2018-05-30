@@ -8,18 +8,20 @@
   ==============================================================================
 */
 
-#include "AspectHeader.h"
+#include "AspectMetadata.h"
 
-AspectHeader::AspectHeader() : name_("") {
+AspectMetadata::AspectMetadata() : name_("") {
 }
 
-AspectHeader::~AspectHeader() {
+AspectMetadata::~AspectMetadata() {
 }
 
-const String &AspectHeader::getName() const {
+AspectMetadata::Listener::~Listener() {}
+
+const String &AspectMetadata::getName() const {
     return name_;
 }
 
-void AspectHeader::setName(const String &name) {
+void AspectMetadata::setName(const String &name) {
     name_ = name;
 }

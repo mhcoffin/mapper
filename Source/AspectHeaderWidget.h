@@ -19,12 +19,11 @@ namespace timbre {
 /*
  * Header of an aspect widget
  */
-class AspectHeaderWidget
-        : public Component, public AspectHeader::Listener
+class AspectHeaderWidget : public Component, AspectMetadata::Listener
 {
 public:
-    AspectHeaderWidget(std::weak_ptr<AspectHeader> aspect);
-    ~AspectHeaderWidget();
+    AspectHeaderWidget(AspectMetadata* aspect);
+    virtual ~AspectHeaderWidget();
 
     void paint(Graphics &) override;
     void resized() override;
@@ -33,7 +32,7 @@ public:
 
 
 private:
-    std::weak_ptr<AspectHeader> aspectHeader_;
+    std::shared_ptr<AspectMetadata> aspectHeader_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectHeaderWidget)
 };

@@ -30,6 +30,10 @@ void Aspect::addItem(std::shared_ptr<AspectItem> item) {
     items_.add(item);
 }
 
+AspectMetadata* Aspect::getHeader() {
+    return &header_;
+}
+
 Array<std::shared_ptr<AspectItem>> Aspect::getItems() const {
     return items_;
 }
