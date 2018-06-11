@@ -20,12 +20,12 @@ AspectPane::AspectPane(AspectSet *model) {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
 
-    for (const std::unique_ptr<Aspect> & aspect : model->getAspects()) {
+    for (const auto & aspect : model->getAspects()) {
         auto aw = std::make_shared<AspectWidget>(aspect.get());
         aspectWidgets_.push_back(aw);
     }
 
-    for (auto aw : aspectWidgets_) {
+    for (const auto& aw : aspectWidgets_) {
         addAndMakeVisible(aw.get());
     }
 }
