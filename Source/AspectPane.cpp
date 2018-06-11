@@ -16,13 +16,13 @@
 namespace timbre {
 
 //==============================================================================
-AspectPane::AspectPane(std::shared_ptr<AspectSet> model) {
+AspectPane::AspectPane(AspectSet *model) {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
 
-    for (auto aspect : model->getAspects()) {
-        auto aw = std::make_shared<AspectWidget>(aspect);
-        aspectWidgets_.add(aw);
+    for (const std::unique_ptr<Aspect> & aspect : model->getAspects()) {
+        auto aw = std::make_shared<AspectWidget>(aspect.get());
+        aspectWidgets_.push_back(aw);
     }
 
     for (auto aw : aspectWidgets_) {

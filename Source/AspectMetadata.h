@@ -1,8 +1,8 @@
 /*
   ==============================================================================
 
-    AspectHeader.h
-    Created: 28 May 2018 12:24:44pm
+    AspectMetadata.h
+    Created: 10 Jun 2018 1:53:10pm
     Author:  Michael Coffin
 
   ==============================================================================
@@ -11,24 +11,22 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class AspectMetadata
-{
+namespace timbre {
+
+class AspectMetadata {
 public:
-    class Listener {
-    public:
-        virtual ~Listener();
-        virtual void changeName(const String& name) = 0;
+    struct Listener {
+        virtual ~Listener() {
+        }
+
+        virtual void changeName(const String &name) = 0;
     };
 
-    AspectMetadata();
-    ~AspectMetadata();
-
+    void setName(const String &name);
     const String& getName() const;
-    void setName(const String& name);
-
 
 private:
     String name_;
-    ListenerList<Listener> listeners_;
-
 };
+
+} // namespace timbre

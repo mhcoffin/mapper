@@ -20,12 +20,12 @@ public:
     AspectSet();
     ~AspectSet();
 
-    void addAspect(std::shared_ptr<Aspect> aspect);
+    void addAspect(std::unique_ptr<Aspect> aspect);
 
-    Array<std::shared_ptr<Aspect>> getAspects() const;
+    const std::vector<std::unique_ptr<Aspect>>& getAspects() const;
 
 private:
-    Array<std::shared_ptr<Aspect>> aspects_;
+    std::vector<std::unique_ptr<Aspect>> aspects_;
 };
 
 }

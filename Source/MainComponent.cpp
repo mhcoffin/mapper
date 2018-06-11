@@ -21,23 +21,22 @@ const auto RESIZER_BAR_THICKNESS = 2;
 //==============================================================================
 MainComponent::MainComponent() {
     // Set up test
-    auto model = std::make_shared<AspectSet>();
 
-    auto duration = std::make_shared<Aspect>();
+    auto duration = std::make_unique<Aspect>();
     duration->setName("Duration");
     duration->addItem(std::make_shared<AspectItem>("staccato"));
     duration->addItem(std::make_shared<AspectItem>("tenuto"));
 
-    model->addAspect(duration);
+    model.addAspect(std::move(duration));
 
-    auto vib = std::make_shared<Aspect>();
+    auto vib = std::make_unique<Aspect>();
     vib->setName("Vibrato");
     vib->addItem(std::make_shared<AspectItem>("sans vibrato"));
     vib->addItem(std::make_shared<AspectItem>("vibrato"));
     vib->addItem(std::make_shared<AspectItem>("molto vibrato"));
-    model->addAspect(vib);
+    model.addAspect(std::move(vib));
 
-    aspects_ = std::make_shared<AspectPane>(model);
+    aspects_ = std::make_shared<AspectPane>(&model);
 
     setOpaque(true);
     addAndMakeVisible(aspects_.get());

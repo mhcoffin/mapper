@@ -32,7 +32,7 @@ public:
 
 
 private:
-    std::shared_ptr<AspectMetadata> aspectHeader_;
+    AspectMetadata* aspectHeader_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectHeaderWidget)
 };

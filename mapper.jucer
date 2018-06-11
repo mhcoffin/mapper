@@ -4,9 +4,10 @@
               cppLanguageStandard="17">
   <MAINGROUP id="im4P9p" name="mapper">
     <GROUP id="{AC22F4E3-E788-FAE8-0055-C4163F8D615D}" name="Source">
-      <FILE id="ULTZDo" name="AspectHeader.cpp" compile="1" resource="0"
-            file="Source/AspectHeader.cpp"/>
-      <FILE id="B6ZHUM" name="AspectHeader.h" compile="0" resource="0" file="Source/AspectHeader.h"/>
+      <FILE id="MRuVPd" name="AspectMetadata.cpp" compile="1" resource="0"
+            file="Source/AspectMetadata.cpp"/>
+      <FILE id="ORrSVB" name="AspectMetadata.h" compile="0" resource="0"
+            file="Source/AspectMetadata.h"/>
       <FILE id="s54WI6" name="AspectHeaderWidget.cpp" compile="1" resource="0"
             file="Source/AspectHeaderWidget.cpp"/>
       <FILE id="fOVPUX" name="AspectHeaderWidget.h" compile="0" resource="0"

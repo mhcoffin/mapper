@@ -23,7 +23,7 @@ namespace timbre {
 */
 class AspectWidget : public Component {
 public:
-    AspectWidget(std::shared_ptr<Aspect> model);
+    AspectWidget(Aspect* model);
     ~AspectWidget();
 
     void paint(Graphics &) override;
@@ -33,7 +33,7 @@ public:
 private:
     void buildFromModel();
 
-    std::shared_ptr<Aspect> model_;
+    Aspect* model_;
 
     std::shared_ptr<AspectHeaderWidget> headerWidget_;
     Array<std::shared_ptr<AspectItemWidget>> itemWidgets_;

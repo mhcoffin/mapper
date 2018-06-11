@@ -33,6 +33,7 @@ public:
 private:
     //==============================================================================
     // Your private member variables go here...
+    AspectSet model;
     std::shared_ptr<AspectPane> aspects_;
     ControlPane controls;
 

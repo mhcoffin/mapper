@@ -14,10 +14,9 @@
 namespace timbre {
 
 //==============================================================================
-AspectWidget::AspectWidget(std::shared_ptr<Aspect> model) {
+AspectWidget::AspectWidget(Aspect* model) : model_(model){
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
-    model_ = model;
 
     headerWidget_ = std::make_shared<AspectHeaderWidget>(model_->getHeader());
     addAndMakeVisible(headerWidget_.get());

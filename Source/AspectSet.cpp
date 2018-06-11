@@ -18,11 +18,11 @@ AspectSet::AspectSet() {
 AspectSet::~AspectSet() {
 }
 
-void AspectSet::addAspect(std::shared_ptr<Aspect> aspect) {
-    aspects_.add(aspect);
+void AspectSet::addAspect(std::unique_ptr<Aspect> aspect) {
+    aspects_.push_back(std::move(aspect));
 }
 
-Array<std::shared_ptr<Aspect>> AspectSet::getAspects() const {
+const std::vector<std::unique_ptr<Aspect>>& AspectSet::getAspects() const {
     return aspects_;
 }
 

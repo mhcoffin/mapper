@@ -22,7 +22,7 @@ namespace timbre {
 */
 class AspectPane : public Component {
 public:
-    AspectPane(std::shared_ptr<AspectSet> model);
+    AspectPane(AspectSet *model);
     ~AspectPane();
 
     void paint(Graphics &) override;
@@ -30,7 +30,7 @@ public:
     void addAspect(String name);
 
 private:
-    Array<std::shared_ptr<AspectWidget>> aspectWidgets_;
+    std::vector<std::shared_ptr<AspectWidget>> aspectWidgets_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AspectPane)
 };
